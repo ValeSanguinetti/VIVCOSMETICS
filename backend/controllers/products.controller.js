@@ -15,7 +15,7 @@ res.json(data)
 },
 async createProduct(req,res){
 
-const { name, category, price, image_url, gradient } = req.body
+const { name, category,stock, price, image_url, gradient } = req.body
 
 const { data, error } = await supabase
 .from("products")
@@ -23,6 +23,7 @@ const { data, error } = await supabase
 {
 name,
 category,
+stock,
 price,
 image_url,
 gradient
