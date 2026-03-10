@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belle Cosmetics</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+
+<header class="py-12 text-center">
+
+<h1 class="font-display text-5xl gradient-text mb-2">
+VIV Cosmetics
+</h1>
+
+<p class="text-gray-500 text-lg">
+Descubre tu belleza natural
+</p>
+
+</header>
+
+
+<nav class="flex justify-center gap-3 mb-10 flex-wrap">
+
+<button class="category-btn px-6 py-2 rounded-full border transition-all duration-300" data-category="all">Todos</button>
+<button class="category-btn px-6 py-2 rounded-full border transition-all duration-300" data-category="labios">Labios</button>
+<button class="category-btn px-6 py-2 rounded-full border transition-all duration-300" data-category="ojos">Ojos</button>
+<button class="category-btn px-6 py-2 rounded-full border transition-all duration-300" data-category="rostro">Rostro</button>
+
+</nav>
+
+
+<main class="px-6 pb-16">
+
+<div id="products-grid"
+class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+</div>
+
+</main>
+
+
+<footer class="text-center py-10 border-t">
+<div class="text-gray-500 space-y-2">
+
+<p>
+<i class="fa-solid fa-phone text-pink-500 mr-2"></i>
+<a href="tel:+59897400905" class="hover:underline">
+097 400 905
+</a>
+</p>
+
+<p>
+<i class="fa-brands fa-instagram text-pink-500 mr-2"></i>
+<a href="https://instagram.com/vilcosmetics" target="_blank" class="hover:underline">
+@vivcosmetics.uy
+</a>
+</p>
+
+</div>
+
+<p class="text-gray-400 text-sm mt-2">
+© 2026 VIV Cosmetics
+</p>
+
+</footer>
+
+<a href="https://wa.me/59897400905?text=Hola%20quiero%20consultar%20por%20un%20producto"
+target="_blank"
+class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg flex items-center justify-center text-2xl">
+
+<i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script src="/js/dom.js"></script>
+<script src="/js/index.js"></script>
+
+</body>
+</html>

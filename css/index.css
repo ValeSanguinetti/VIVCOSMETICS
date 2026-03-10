@@ -1,0 +1,46 @@
+
+body{
+font-family:'Montserrat',sans-serif;
+background:linear-gradient(180deg,#fdf8f9 0%,#fef5f7 50%,#fdf2f4 100%);
+}
+
+.font-display{
+font-family:'Cormorant Garamond',serif;
+}
+
+.product-card{
+transition:all .3s ease;
+}
+
+.product-card:hover{
+transform:translateY(-8px);
+}
+
+.product-image{
+transition:transform .5s ease;
+}
+
+.product-card:hover .product-image{
+transform:scale(1.05);
+}
+
+.gradient-text{
+background:linear-gradient(135deg,#c9a0dc 0%,#e8b4b8 100%);
+-webkit-background-clip:text;
+background-clip: text;
+-webkit-text-fill-color:transparent;
+}
+.ribbon{
+position:absolute;
+top:14px;
+right:-40px;
+background:#ef4444;
+color:white;
+font-size:11px;
+font-weight:600;
+padding:6px 50px;
+transform:rotate(45deg);
+letter-spacing:1px;
+box-shadow:0 3px 8px rgba(0,0,0,0.2);
+z-index:10;
+}
