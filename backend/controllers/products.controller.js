@@ -63,7 +63,21 @@ if(error) return res.status(500).json(error)
 
 res.json(data)
 
-}
+},
+async deleteProduct(req, res) {
+    const { id } = req.params;
+
+    const { data, error } = await supabase
+      .from("products")
+      .delete()
+      .eq("id", id);
+
+    if (error) return res.status(500).json(error);
+
+    res.json({ message: "Producto eliminado correctamente", data });
+  }
+
+
 };
 
 

@@ -141,6 +141,12 @@ Editar
 
 </button>
 
+      <button
+        onclick="confirmarEliminar(${p.id}, '${p.name}')"
+        class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ml-2">
+        Eliminar
+      </button>
+    
 </div>
 
 `).join("")
@@ -173,4 +179,50 @@ await window.supabaseClient.auth.signOut()
 
 window.location.href = "login.html"
 
+}
+
+
+// Función para mostrar modal de confirmación
+function confirmarEliminar(id, name) {
+  // Crear overlay
+  const overlay = document.createElement("div");
+  overlay.id = "modal-overlay";
+  overlay.className = "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+
+  // Crear modal
+  const modal = document.createElement("div");
+  modal.className = "bg-white p-6 rounded-xl shadow-lg text-center max-w-sm";
+
+  modal.innerHTML = `
+    <p class="mb-4">¿Estás seguro que quieres eliminar <strong>${name}</strong>?</p>
+    <button id="confirm-btn" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 mr-2">Sí, eliminar</button>
+    <button id="cancel-btn" class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">Cancelar</button>
+  `;
+
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+
+  // Confirmar eliminación
+  document.getElementById("confirm-btn").addEventListener("click", async () => {
+    await eliminarProducto(id);
+    document.body.removeChild(overlay); // cerrar modal
+    cargarProductos(); // recargar lista
+  });
+
+  // Cancelar
+  document.getElementById("cancel-btn").addEventListener("click", () => {
+    document.body.removeChild(overlay);
+  });
+}
+
+async function eliminarProducto(id) {
+  try {
+    const res = await fetch(`${API_URL}/products/${id}`, {
+      method: "DELETE"
+    });
+    if (!res.ok) throw new Error("Error al eliminar producto");
+  } catch (error) {
+    console.error(error);
+    alert("No se pudo eliminar el producto");
+  }
 }
