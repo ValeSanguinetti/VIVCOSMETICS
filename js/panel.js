@@ -55,7 +55,7 @@ price: Number(document.getElementById("price").value),
 category: document.getElementById("category").value,
 stock: Number(document.getElementById("stock").value),
 image_url: imageUrl,
-gradient: "linear-gradient(135deg,#ff9ff3,#f368e0)"
+gradient: "linear-gradient(135deg,#f9e3e3,#f6d6d6)"
 
 }
 
