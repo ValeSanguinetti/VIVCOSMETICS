@@ -13,8 +13,8 @@ import CategorySidebar from "../components/catalog/CategorySidebar";
 import CatalogHeader from "../components/catalog/CatalogHeader";
 import ProductGrid from "../components/catalog/ProductGrid";
 import EmptyProducts from "../components/catalog/EmptyProducts";
-import CatalogFooter from "../components/catalog/CatalogFooter";
 import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -237,7 +237,7 @@ export default function CatalogPage() {
             </main>
 
             {/* Footer */}
-            <CatalogFooter />
+            <Footer />
         </div>
     );
 }
