@@ -18,7 +18,7 @@ static async getAll(
     page: number = 1,
     search: string = "",
     categoryId: string = "",
-    limit: number = 10
+    limit: number = 12
 ): Promise<ProductsResponse> {
     const token =
         localStorage.getItem("token");
