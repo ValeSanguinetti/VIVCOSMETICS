@@ -36,7 +36,9 @@ export default function CatalogPage() {
 
     const [isCategoryOpen, setIsCategoryOpen] =
         useState(false);
-
+    const [currentPage, setCurrentPage] = useState(1);
+const [hasMoreProducts, setHasMoreProducts] = useState(true);
+const [loadingMore, setLoadingMore] = useState(false);
     // --------------------------------------------------
     // CARGAR DATOS
     // --------------------------------------------------
@@ -46,28 +48,61 @@ export default function CatalogPage() {
         cargarCategorias();
     }, []);
 
-    const cargarProductos = async () => {
-        try {
+   const cargarProductos = async (page: number = 1) => {
+    try {
+        if (page === 1) {
             setLoading(true);
-
-            const response =
-                await ProductService.getAll(1);
-
-            const data =
-                response.data?.products ?? [];
-
-            setProducts(data);
-        } catch (error) {
-            console.error(
-                "Error al cargar productos:",
-                error
-            );
-
-            setProducts([]);
-        } finally {
-            setLoading(false);
+        } else {
+            setLoadingMore(true);
         }
-    };
+
+        const response =
+            await ProductService.getAll(page);
+
+        const newProducts =
+            response.data?.products ?? [];
+
+        const pagination =
+            response.data?.pagination;
+
+        if (page === 1) {
+            setProducts(newProducts);
+        } else {
+            setProducts((currentProducts) => [
+                ...currentProducts,
+                ...newProducts,
+            ]);
+        }
+
+        setCurrentPage(page);
+
+        if (pagination) {
+            setHasMoreProducts(
+                page < pagination.total_pages
+            );
+        } else {
+            setHasMoreProducts(
+                newProducts.length > 0
+            );
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Error al cargar productos:",
+            error
+        );
+
+        if (page === 1) {
+            setProducts([]);
+        }
+
+    } finally {
+
+        setLoading(false);
+        setLoadingMore(false);
+    }
+};
 
     const cargarCategorias = async () => {
         try {
@@ -202,8 +237,8 @@ export default function CatalogPage() {
 
                     {/* Load more */}
                     {!loading &&
-                        filteredProducts.length >
-                            0 && (
+    filteredProducts.length > 0 &&
+    hasMoreProducts && (
                             <div
                                 className="
                                     mt-16
@@ -212,25 +247,31 @@ export default function CatalogPage() {
                                 "
                             >
                                 <button
-                                    type="button"
-                                    className="
-                                        font-label-lg
-                                        text-[14px]
-                                        uppercase
-                                        tracking-widest
-                                        px-8
-                                        py-4
-                                        border
-                                        border-white/30
-                                        text-white
-                                        hover:bg-white
-                                        hover:text-black
-                                        transition-all
-                                        duration-300
-                                    "
-                                >
-                                    ver mas productos
-                                </button>
+    type="button"
+    onClick={() => cargarProductos(currentPage + 1)}
+    disabled={loadingMore}
+    className="
+        font-label-lg
+        text-[14px]
+        uppercase
+        tracking-widest
+        px-8
+        py-4
+        border
+        border-white/30
+        text-white
+        hover:bg-white
+        hover:text-black
+        transition-all
+        duration-300
+        disabled:opacity-50
+        disabled:cursor-not-allowed
+    "
+>
+    {loadingMore
+        ? "Cargando..."
+        : "Ver más productos"}
+</button>
                             </div>
                         )}
                 </div>
