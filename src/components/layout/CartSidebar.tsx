@@ -20,14 +20,18 @@ const whatsappUrl = "https://wa.me/59897400905";
 
 const handleCheckout = async () => {
     const orderDetails = items
-        .map((item) => {
-            const quantity = Number(item.quantity) || 1;
-            const price = Number(item.producto_precio) || 0;
-            const subtotal = price * quantity;
+    .map((item) => {
+        const quantity = Number(item.quantity) || 1;
+        const price = Number(item.producto_precio) || 0;
+        const subtotal = price * quantity;
 
-            return `• ${item.producto_nombre} — Cantidad: ${quantity} — $${subtotal.toFixed(2)}`;
-        })
-        .join("\n");
+        const variante = item.variante_nombre
+            ? ` — Variante: ${item.variante_nombre}`
+            : "";
+
+        return `• ${item.producto_nombre}${variante} — Cantidad: ${quantity} — $${subtotal.toFixed(2)}`;
+    })
+    .join("\n");
 
     const message = `Hola, quiero realizar el siguiente pedido:
 

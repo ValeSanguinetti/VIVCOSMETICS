@@ -33,3 +33,8 @@ export interface CategoryPaginationProps {
     onPrevious: () => void;
     onNext: () => void;
 }
+export interface CategorySimpleResponse {
+    success: boolean;
+    message: string;
+    data?: Category[];
+}

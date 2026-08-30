@@ -109,14 +109,11 @@ const [
                 try {
 
                     const response =
-                        await CategoryService.getAll(
-                            1,
-                            ""
-                        );
-
-                    setCategorias(
-                        response.data?.categories ?? []
-                    );
+                        await CategoryService.getAllSimple();
+                          
+                   setCategorias(
+    response.data ?? []
+);
 
                 } catch (error) {
 
