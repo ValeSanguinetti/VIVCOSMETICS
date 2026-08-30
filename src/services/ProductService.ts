@@ -519,7 +519,6 @@ formData.append("_method", "PUT");
     const result =
         await response.json();
 
-
     if (!response.ok) {
 
         throw new Error(

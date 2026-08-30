@@ -341,10 +341,6 @@ const handleSave = async () => {
             Number(precio).toString()
         );
 
-        formData.append(
-            "stock",
-            (Number(stock) || 0).toString()
-        );
 
         formData.append(
             "descripcion",
@@ -422,13 +418,6 @@ const handleSave = async () => {
             }
         );
 
-        // --------------------------------------------------
-        // DEBUG
-        // --------------------------------------------------
-
-        console.log(
-            "Enviando producto..."
-        );
 
         // --------------------------------------------------
         // CREAR
@@ -449,7 +438,6 @@ if (isEditMode) {
         Number(id),
         productData
     );
-
 } else {
 
     await ProductService.create(
@@ -458,8 +446,7 @@ if (isEditMode) {
 
 }
 
-        window.location.href =
-            "/admin/productos";
+      window.location.href = "/admin/productos";
 
     } catch (error) {
 
