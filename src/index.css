@@ -18,3 +18,27 @@ body {
     'GRAD' 0,
     'opsz' 24;
 }
+
+/* Scrollbar del sidebar de categorías */
+.category-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+
+/* Chrome, Edge, Safari */
+.category-scrollbar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.category-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.category-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+}
+
+.category-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
+}

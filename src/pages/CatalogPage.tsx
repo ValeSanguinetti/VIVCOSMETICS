@@ -109,10 +109,10 @@ const [loadingMore, setLoadingMore] = useState(false);
             setLoadingCategories(true);
 
             const response =
-                await CategoryService.getAll(1);
+                await CategoryService.getAllSimple();
 
             const data =
-                response.data?.categories ?? [];
+                response.data ?? [];
 
             setCategories(data);
         } catch (error) {

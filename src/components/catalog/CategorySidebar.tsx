@@ -1,4 +1,6 @@
+
 import type { Category } from "../../types/category.type";
+
 interface CategorySidebarProps {
     categories: Category[];
     activeCategory: string;
@@ -98,6 +100,7 @@ export default function CategorySidebar({
                         items-center
                         justify-between
                         mb-10
+                        shrink-0
                     "
                 >
                     <div>
@@ -110,9 +113,7 @@ export default function CategorySidebar({
                                 text-[#8e9192]
                                 mb-2
                             "
-                        >
-                            
-                        </p>
+                        />
 
                         <h2
                             className="
@@ -148,15 +149,28 @@ export default function CategorySidebar({
                 </div>
 
                 {/* Categories */}
-                <nav className="flex-1 flex flex-col gap-1">
+               <nav
+    className="
+        flex-1
+        flex
+        flex-col
+        gap-1
+        overflow-y-auto
+        pr-2
+        category-scrollbar
+    "
+>
                     {/* All Products */}
                     <button
                         type="button"
                         onClick={() =>
-                            onCategoryChange("Todos los productos")
+                            onCategoryChange(
+                                "Todos los productos"
+                            )
                         }
                         className={`
                             w-full
+                            shrink-0
                             flex
                             items-center
                             justify-between
@@ -226,6 +240,7 @@ export default function CategorySidebar({
                                     }
                                     className={`
                                         w-full
+                                        shrink-0
                                         flex
                                         items-center
                                         justify-between
